@@ -3,7 +3,7 @@
  * @param {Object} o 
  * @param {Number} d 
  */
-const pp = (o, d = 2) => '\n' + JSON.stringify(o, undefined, d);
+const pp = (o, d = 2) => JSON.stringify(o, undefined, d);
 
 /**
  * Minify Object (JSON)

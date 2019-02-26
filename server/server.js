@@ -1,9 +1,11 @@
 var express = require('express');
 var bodyParser = require('body-parser');
 
-var {mongoose} = require('./db/mongoose');
-var {Todo} = require('./models/todo');
-var {User} = require('./models/user');
+const {ObjectID} = require('mongodb');
+const {mongoose} = require('./db/mongoose');
+const {Todo} = require('./models/todo');
+const {User} = require('./models/user');
+const {pp, ppm} = require('./../playground/functions');
 
 var app = express();
 
@@ -30,6 +32,25 @@ app.get('/todos', (req, res) => {
     });
   }, (e) => {
     res.status(400).send(e);
+  });
+});
+
+// GET /todos/:id
+app.get('/todos/:id', (req, res) => {
+  var id = req.params.id;
+
+  if (!ObjectID.isValid(id)) {
+    return res.status(404).send();
+  }
+
+  Todo.findById(id).then((todo) => {
+    if (!todo) {
+      return res.status(404).send();
+    }
+    
+    res.send(todo);
+  }).catch((e) => {
+    res.status(400).send();
   });
 });
 
