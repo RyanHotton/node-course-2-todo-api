@@ -8,6 +8,7 @@ const {User} = require('./models/user');
 const {pp, ppm} = require('./../playground/functions');
 
 var app = express();
+const port = process.env.PORT || 3000;
 
 app.use(bodyParser.json());
 
@@ -22,8 +23,6 @@ app.post('/todos', (req, res) => {
     res.status(400).send(e);
   });
 });
-
-var port = 3000;
 
 app.get('/todos', (req, res) => {
   Todo.find().then((todos) => {

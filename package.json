@@ -4,8 +4,12 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "start": "node server/server.js",
     "test": "mocha server/**/*.test.js",
     "test-watch": "nodemon --exec \"npm test\""
+  },
+  "engines": {
+    "node": "11.10.0"
   },
   "author": "Ryan Hotton",
   "license": "ISC",
@@ -13,8 +17,7 @@
     "body-parser": "^1.18.3",
     "express": "^4.16.4",
     "mongodb": "^3.1.13",
-    "mongoose": "^5.4.15",
-    "npm": "^6.8.0"
+    "mongoose": "^5.4.15"
   },
   "devDependencies": {
     "expect": "^1.20.2",
