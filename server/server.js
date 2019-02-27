@@ -27,9 +27,7 @@ var port = 3000;
 
 app.get('/todos', (req, res) => {
   Todo.find().then((todos) => {
-    res.send({
-      todos
-    });
+    res.send({todos});
   }, (e) => {
     res.status(400).send(e);
   });
@@ -48,7 +46,7 @@ app.get('/todos/:id', (req, res) => {
       return res.status(404).send();
     }
     
-    res.send(todo);
+    res.send({todo});
   }).catch((e) => {
     res.status(400).send();
   });
